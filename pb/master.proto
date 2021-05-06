@@ -1,0 +1,159 @@
+syntax = "proto3";
+
+package master_pb;
+
+
+
+service Capstone {
+    rpc SendHeartbeat (stream Heartbeat) returns (stream HeartbeatResponse) {
+    }
+    rpc KeepConnected (stream KeepConnectedRequest) returns (stream VolumeLocation) {
+    }
+    rpc LookupVolume (LookupVolumeRequest) returns (LookupVolumeResponse) {
+    }
+    rpc Assign (AssignRequest) returns (AssignResponse) {
+    }
+    rpc Statistics (StatisticsRequest) returns (StatisticsResponse) {
+    }
+
+    rpc VolumeList (VolumeListRequest) returns (VolumeListResponse) {
+    }
+    rpc GetMasterConfiguration (GetMasterConfigurationRequest) returns (GetMasterConfigurationResponse) {
+    }
+    rpc ListMasterClients (ListMasterClientsRequest) returns (ListMasterClientsResponse) {
+    }
+
+}
+
+
+
+message Heartbeat {
+    string ip = 1;
+    uint32 port = 2;
+    string public_url = 3;
+    uint64 max_file_key = 5;
+    string data_center = 6;
+    string rack = 7;
+    uint32 admin_port = 8;
+    repeated VolumeInformationMessage volumes = 9;
+    // delta volumes
+    repeated VolumeShortInformationMessage new_volumes = 10;
+    repeated VolumeShortInformationMessage deleted_volumes = 11;
+    bool has_no_volumes = 12;
+
+    // erasure coding
+    repeated VolumeEcShardInformationMessage ec_shards = 16;
+    // delta erasure coding shards
+    repeated VolumeEcShardInformationMessage new_ec_shards = 17;
+    repeated VolumeEcShardInformationMessage deleted_ec_shards = 18;
+    bool has_no_ec_shards = 19;
+
+    map<string, uint32> max_volume_counts = 4;
+
+}
+
+message HeartbeatResponse {
+    uint64 volume_size_limit = 1;
+    string leader = 2;
+    string metrics_address = 3;
+    uint32 metrics_interval_seconds = 4;
+    repeated StorageBackend storage_backends = 5;
+}
+
+message VolumeInformationMessage {
+    uint32 id = 1;
+    uint64 size = 2;
+    uint64 file_count = 4;
+    uint64 delete_count = 5;
+}
+
+message VolumeShortInformationMessage {
+    uint32 id = 1;
+    string disk_type = 15;
+}
+
+
+message Empty {
+}
+
+
+message KeepConnectedRequest {
+    string name = 1;
+    uint32 grpc_port = 2;
+}
+
+message VolumeLocation {
+    string url = 1;
+    string public_url = 2;
+    repeated uint32 new_vids = 3;
+    repeated uint32 deleted_vids = 4;
+    string leader = 5; // optional when leader is not itself
+    string data_center = 6; // optional when DataCenter is in use
+}
+
+message LookupVolumeRequest {
+    repeated string volume_ids = 1;
+    string collection = 2; // optional, a bit faster if provided.
+}
+message LookupVolumeResponse {
+    message VolumeIdLocation {
+        string volume_id = 1;
+        repeated Location locations = 2;
+        string error = 3;
+    }
+    repeated VolumeIdLocation volume_id_locations = 1;
+}
+
+message Location {
+    string url = 1;
+}
+
+message AssignRequest {
+    uint64 count = 1;
+    string data_node = 7;
+    uint32 memory_map_max_size_mb = 8;
+}
+message AssignResponse {
+    string fid = 1;
+    string url = 2;
+    uint64 count = 4;
+    string error = 5;
+
+}
+
+message StatisticsRequest {
+
+    string ttl = 3;
+    string disk_type = 4;
+}
+message StatisticsResponse {
+    uint64 total_size = 4;
+    uint64 used_size = 5;
+    uint64 file_count = 6;
+}
+
+
+//
+// volume related
+//
+message DiskInfo {
+    string type = 1;
+    uint64 volume_count = 2;
+    uint64 max_volume_count = 3;
+    uint64 free_volume_count = 4;
+    uint64 active_volume_count = 5;
+    repeated VolumeInformationMessage volume_infos = 6;
+    uint64 remote_volume_count = 8;
+}
+message DataNodeInfo {
+    string id = 1;
+    map<string, DiskInfo> diskInfos = 2;
+}
+
+message ListMasterClientsRequest {
+    string client_type = 1;
+}
+message ListMasterClientsResponse {
+    repeated string grpc_addresses = 1;
+}
+

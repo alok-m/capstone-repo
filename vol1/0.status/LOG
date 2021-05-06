@@ -1,0 +1,21 @@
+=============== Mar 1, 2021 (IST) ===============
+23:10:36.120252 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+23:10:36.131225 db@open opening
+23:10:36.131660 version@stat F·[] S·0B[] Sc·[]
+23:10:36.147757 db@janitor F·2 G·0
+23:10:36.147800 db@open done T·16.546819ms
+=============== Mar 1, 2021 (IST) ===============
+23:10:47.087055 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+23:10:47.087274 version@stat F·[] S·0B[] Sc·[]
+23:10:47.087297 db@open opening
+23:10:47.087367 journal@recovery F·1
+23:10:47.087671 journal@recovery recovering @1
+23:10:47.090331 version@stat F·[] S·0B[] Sc·[]
+23:10:47.108843 db@janitor F·2 G·0
+23:10:47.108875 db@open done T·21.567283ms
+23:10:47.112235 transaction@flush created L0@4 N·2 S·145B "\x11\xff\xff..\x00\x00\x00,v2":"\"\x00\x00..\x00\x00\x00,v1"
+23:10:47.112289 version@stat F·[1] S·145B[145B] Sc·[0.25]
+23:10:47.122809 transaction@flush created L0@5 N·4 S·181B "\x11\xff\xff..\x00\x00\x00,d3":"\"\x00\x00..\xf2\x83q,v6"
+23:10:47.122848 version@stat F·[2] S·326B[326B] Sc·[0.50]
+23:10:47.132054 db@close closing
+23:10:47.132195 db@close done T·156.271µs

@@ -1,0 +1,43 @@
+=============== Mar 2, 2021 (IST) ===============
+14:20:00.847606 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+14:20:00.860069 db@open opening
+14:20:00.860528 version@stat F·[] S·0B[] Sc·[]
+14:20:00.866794 db@janitor F·2 G·0
+14:20:00.866829 db@open done T·6.733914ms
+=============== Mar 2, 2021 (IST) ===============
+14:20:53.266815 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+14:20:53.267009 version@stat F·[] S·0B[] Sc·[]
+14:20:53.267037 db@open opening
+14:20:53.267101 journal@recovery F·1
+14:20:53.269400 journal@recovery recovering @1
+14:20:53.269939 version@stat F·[] S·0B[] Sc·[]
+14:20:53.295544 db@janitor F·2 G·0
+14:20:53.295580 db@open done T·28.531588ms
+14:20:53.300118 transaction@flush created L0@4 N·2 S·145B "\x11\xff\xff..\x00\x00\x00,v2":"\"\x00\x00..\x00\x00\x00,v1"
+14:20:53.300206 version@stat F·[1] S·145B[145B] Sc·[0.25]
+14:20:53.319395 transaction@flush created L0@5 N·4 S·180B "\x11\xff\xff..\x00\x00\x00,d3":"\"\x00\x00..\xff\xfe),v6"
+14:20:53.319440 version@stat F·[2] S·325B[325B] Sc·[0.50]
+14:20:53.333000 db@close closing
+14:20:53.333151 db@close done T·149.475µs
+=============== Mar 2, 2021 (IST) ===============
+14:21:23.476152 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+14:21:23.476403 version@stat F·[2] S·325B[325B] Sc·[0.50]
+14:21:23.476435 db@open opening
+14:21:23.476510 journal@recovery F·1
+14:21:23.478587 journal@recovery recovering @2
+14:21:23.479081 version@stat F·[2] S·325B[325B] Sc·[0.50]
+14:21:23.500775 db@janitor F·4 G·0
+14:21:23.500811 db@open done T·24.364853ms
+=============== Mar 2, 2021 (IST) ===============
+14:22:23.760466 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+14:22:23.761001 version@stat F·[2] S·325B[325B] Sc·[0.50]
+14:22:23.761042 db@open opening
+14:22:23.761141 journal@recovery F·1
+14:22:23.761419 journal@recovery recovering @6
+14:22:23.764175 version@stat F·[2] S·325B[325B] Sc·[0.50]
+14:22:23.784791 db@janitor F·4 G·0
+14:22:23.784827 db@open done T·23.771789ms
+14:22:23.788568 transaction@flush created L0@10 N·4 S·185B "\x11\xff\xff..\x00\x01\xd7,d7":"\"\x00\x00..\xf2\x81\x9a,v10"
+14:22:23.788645 version@stat F·[3] S·510B[510B] Sc·[0.75]
+14:22:23.799809 db@close closing
+14:22:23.800066 db@close done T·252.627µs
